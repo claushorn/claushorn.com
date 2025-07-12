@@ -11,10 +11,10 @@ const Book = () => {
         <section className="py-20">
           <div className="section-container">
             <h1 className="text-4xl md:text-5xl font-bold text-accent-blue mb-6">
-              Upcoming Book
+              Accelerate Your Research with AI <br></br> A Practical Guide for Scientists
             </h1>
             <p className="text-xl text-charcoal/80 mb-12 max-w-3xl">
-              "Reinventing Science: How AI is transforming How We Understand the World".
+              How to become an AI-native researcher in the age of AI. This book is a practical guide for experimental and computational scientists who want to harness AI as a force multiplier in their research. It offers frameworks, case studies, and tool recommendations for every stage of the research process, from literature review and hypothesis generation to experiment design, analysis, and dissemination.
             </p>
 
             {/* Book Preview */}
@@ -28,72 +28,48 @@ const Book = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-charcoal mb-4">What to Expect</h3>
+                  <h3 className="text-lg font-semibold text-charcoal mb-4">What This Book Offers</h3>
                   <ul className="space-y-3 text-charcoal/80">
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-accent-blue rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Insights from 20+ years in particle physics, machine learning, and computational biology</span>
+                      <span>Problem-solution frameworks and practical checklists for every research stage</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-accent-blue rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Practical frameworks for accelerating scientific discovery with AI</span>
+                      <span>Case studies and real-world examples from biology, chemistry, and computational science</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-accent-blue rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Case studies from CERN, Stanford, Yale, and industry applications</span>
+                      <span>Toolkits and walkthroughs for AI-powered analysis, design, and interpretation</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-accent-blue rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Bridging the gap between research and entrepreneurship</span>
+                      <span>Updatable structure: lasting questions, evolving best practices, and a focus on reproducibility</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-charcoal mb-4">Target Audience</h3>
+                  <h3 className="text-lg font-semibold text-charcoal mb-4">Who It's For</h3>
                   <ul className="space-y-3 text-charcoal/80">
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-dark-red rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Researchers looking to leverage AI in their work</span>
+                      <span>Experimental and computational scientists in any domain</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-dark-red rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Entrepreneurs building AI-driven scientific tools</span>
+                      <span>Research leaders and project managers navigating the AI transition</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-dark-red rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Leaders transforming R&D with machine learning</span>
+                      <span>Students and professionals building their AI research stack</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-dark-red rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Students and professionals in computational sciences</span>
+                      <span>Anyone interested in the future of science and the evolving role of the researcher</span>
                     </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-
-            {/* Writing Process */}
-            <div className="mb-16">
-              <div className="flex items-center space-x-4 mb-8">
-                <PenTool className="h-6 w-6 text-accent-blue" />
-                <h2 className="text-2xl font-semibold text-charcoal">
-                  Behind the Writing
-                </h2>
-              </div>
-              
-              <div className="bg-white border border-light-gray p-6 rounded-lg">
-                <p className="text-charcoal/80 leading-relaxed mb-4">
-                  This book represents a synthesis of my journey from fundamental physics research 
-                  to building AI systems that can accelerate scientific discovery. Drawing from 
-                  experiences at world-class institutions and real-world applications, I'm crafting 
-                  a practical guide for the next generation of scientists.
-                </p>
-                <p className="text-charcoal/80 leading-relaxed">
-                  The writing process involves distilling complex concepts into actionable insights, 
-                  sharing both successes and lessons learned, and providing frameworks that others 
-                  can adapt to their own research and entrepreneurial journeys.
-                </p>
               </div>
             </div>
 
@@ -107,9 +83,7 @@ const Book = () => {
               </div>
               
               <p className="text-charcoal/80 mb-6 max-w-2xl mx-auto">
-                The book is currently in development. I'll be sharing updates on progress, 
-                key insights, and preview chapters through my essays and newsletter. 
-                Join the community to be among the first to know when it's available.
+                The book is currently in development. I invite you to share your experiences: How are you doing research? How are you using AI? What are your biggest challenges? Join the conversation and help shape the future of AI-native science.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

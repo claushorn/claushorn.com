@@ -143,7 +143,7 @@ const Research = () => {
       collaborators: ["ICLS"],
       publications: [],
       areas: ["Computational Biology"],
-      image: "NextGenPCR.png",
+      image: "nextGenPCR.png",
       comment: "Unfortunately, this proposal was rejected by SNF, and there was a shortage of PCR tests because processing was too slow, which our approach might have been able to address."
     },
     {

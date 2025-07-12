@@ -63,4 +63,5 @@ Build the project first:
 npm run build
 ```
 
+
 Then deploy the `dist` folder to your hosting service of choice.

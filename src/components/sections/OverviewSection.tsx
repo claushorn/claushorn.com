@@ -27,7 +27,7 @@ const OverviewSection = () => {
   }, []);
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white pb-20">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           {/* Latest News */}

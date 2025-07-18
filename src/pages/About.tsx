@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Quote } from "lucide-react";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-white text-charcoal font-sans">
       <Navbar />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-accent-blue/10 to-light-gray py-20 pt-32">
+      <section className="bg-gradient-to-br from-accent-blue/10 to-light-gray pt-16 pb-0">
         <div className="section-container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
@@ -20,8 +21,25 @@ const About = () => {
         </div>
       </section>
 
+      {/* Testimonial Quote */}
+      <section className="py-0 mt-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-gradient-to-r from-accent-blue/5 to-dark-red/5 p-4 rounded-lg">
+            <div className="flex items-start space-x-4">
+              <Quote className="h-8 w-8 text-accent-blue flex-shrink-0 mt-1" />
+              <div>
+                <blockquote className="text-xl font-medium text-charcoal mb-4 italic">
+                  "Claus has consistently been a magnet for talented students. [...] I have worked with many strong researchers in my career, many of them in faculty positions worldwide. When it comes to pursuing bold ideas with significant impact, I believe Claus is among the very best of them."
+                </blockquote>
+                <cite className="text-charcoal/70">— Su Dong, Professor of Physics, Stanford</cite>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Content */}
-      <section className="py-20">
+      <section className="pt-2 pb-20">
         <div className="section-container">
           <div className="md:flex md:items-start md:space-x-12">
             {/* Photo */}
@@ -78,7 +96,7 @@ const About = () => {
                   <h2 className="text-2xl font-semibold mb-4">Mentorship & Teaching</h2>
                   <ul className="list-disc list-inside space-y-2">
                   <li>Supervised &gt;10 Master's and Ph.D. students across physics, AI, and computational biology. </li>
-                  <li>Taught over 500 students in machine learning, deep learning, artificial intelligence, and reinforcement learning.</li>
+                  <li>Taught 500+ students in machine learning, deep learning, artificial intelligence, and reinforcement learning.</li>
                     </ul>
                     </div>
                 <div>

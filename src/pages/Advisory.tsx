@@ -93,6 +93,10 @@ const Advisory = () => {
               sectors. My approach focuses on translating cutting-edge AI research into real-world impact, 
               helping organizations accelerate digital transformation and gain competitive advantage.
             </p>
+            <div className="flex items-center bg-light-gray rounded-lg p-5 mb-12 w-full text-lg text-charcoal/80">
+              <span className="text-accent-blue mr-3 text-2xl font-bold flex-shrink-0">▶</span>
+              <span>As a member of the SATW panel I am advising the Swiss Federal Council on national Artificial Intelligence Strategy.</span>
+            </div>
 
             {/* Client Testimonial */}
             <div className="mb-16 bg-gradient-to-r from-accent-blue/5 to-dark-red/5 p-8 rounded-lg">

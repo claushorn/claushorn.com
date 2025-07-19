@@ -2,8 +2,7 @@
 layout: post
 title: "The Potential of AI Interpretability to Advance Scientific Discovery"
 date: 2025-06-01
-categories: [AI, Interpretability, Science]
-tags: [AI, Interpretability, Mechanistic Analysis, AI for Science]
+tags: [Mechanistic Interpretability, AI for Scientific Discovery]
 image: "1748905089783.jpg"
 ---
 

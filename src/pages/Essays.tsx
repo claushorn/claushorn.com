@@ -2,68 +2,193 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { getAllEssays } from "@/utils/essayLoader";
 
 const Essays = () => {
-  const essays = [
-    {
-      title: "The Potential of AI Interpretability to Advance Scientific Discovery",
-      excerpt: "Exploring how AI interpretability can unlock new insights in scientific research and accelerate discovery across multiple domains.",
-      date: "2025-06-01",
-      readTime: "8 min read",
-      category: "AI for Scientific Discovery",
-      featured: false,
-      link: "/essays/interpretability_for_science",
-      image: "1748905089783.jpg",
-      internal: true
-    },
-    {
-      title: "The New Science of Thought",
-      excerpt: "Large Language Models (LLMs), fine-tuned through reinforcement learning — exemplified by models like ChatGPT — have taken the world by storm. This is based on their ability...",
-      date: "2023-06-01",
-      readTime: "10 min read",
-      category: "LLM Agents",
-      featured: false,
-      link: "https://medium.com/@claus.horn/the-new-science-of-thought-de667c08b45c",
-      image: "1750703658310.jpg"
-    },
-    {
-      title: "How Applied Reinforcement Learning will take over the world",
-      excerpt: "Data Science today is used mainly for operational automation by leveraging supervised learning. Unfortunately, these kinds of approaches forgo the main potential for value creation...",
-      date: "2022-05-01",
-      readTime: "12 min read",
-      category: "Autonomous Agents",
-      featured: false,
-      link: "https://www.linkedin.com/pulse/data-science-20-how-applied-reinforcement-learning-take-horn/",
-      image: "1651347180205.jpg"
-    },
-    {
-      title: "Math 2.0 - The fundamental importance of machine learning",
-      excerpt: "Some people, especially during the current data science hype, see machine learning as just another algorithm. Unfortunately, this interpretation completely misses the forest for the trees.",
-      date: "2021-09-01",
-      readTime: "9 min read",
-      category: "Machine Learning",
-      featured: false,
-      link: "https://www.linkedin.com/pulse/math-20-fundamental-importance-machine-learning-dr-claus-horn",
-      image: "1630573830855.jpg"
-    },
-    {
-      title: "Why do deep neural networks generalize?",
-      excerpt: "The reason for a neural network's ability to generalize is considered one of the most important open questions in machine learning. Given the recent emergence of LLMs...",
-      date: "2023-08-12",
-      readTime: "9 min read",
-      category: "Machine Learning",
-      featured: false,
-      link: "https://medium.com/@claus.horn/why-do-deep-neural-networks-generalize-3a30c5d523fd",
-      image: "1_JlqOT-gq2QXD-rUzQbj-Bw.webp"
-    }
-  ];
+  const [essays, setEssays] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  const categories = ["All", "AI for Scientific Discovery", "LLM Agents", "Autonomous Agents", "Machine Learning"];
+  // Load essays from the essay loader
+  React.useEffect(() => {
+    const loadEssays = async () => {
+      try {
+        const loadedEssays = await getAllEssays();
+        
+        // Transform the loaded essays to match the expected format
+        const transformedEssays = loadedEssays.map(essay => ({
+          title: essay.metadata.title,
+          excerpt: essay.content.substring(0, 150) + "...",
+          date: essay.metadata.date,
+          readTime: "5 min read", // Default read time
+          tags: essay.metadata.tags || ["AI"],
+          featured: false,
+          link: `/essays/${essay.slug}`,
+          image: essay.metadata.image,
+          internal: true
+        }));
+
+        // Hardcoded external essays (older essays without markdown files)
+        const externalEssays = [
+          {
+            title: "The New Science of Thought",
+            excerpt: "Large Language Models (LLMs), fine-tuned through reinforcement learning — exemplified by models like ChatGPT — have taken the world by storm. This is based on their ability...",
+            date: "2023-06-01",
+            readTime: "10 min read",
+            tags: ["LLM Agents"],
+            featured: false,
+            link: "https://medium.com/@claus.horn/the-new-science-of-thought-de667c08b45c",
+            image: "1750703658310.jpg"
+          },
+          {
+            title: "How Applied Reinforcement Learning will take over the world",
+            excerpt: "Data Science today is used mainly for operational automation by leveraging supervised learning. Unfortunately, these kinds of approaches forgo the main potential for value creation...",
+            date: "2022-05-01",
+            readTime: "12 min read",
+            tags: ["Autonomous Agents"],
+            featured: false,
+            link: "https://www.linkedin.com/pulse/data-science-20-how-applied-reinforcement-learning-take-horn/",
+            image: "1651347180205.jpg"
+          },
+          {
+            title: "Math 2.0 - The fundamental importance of machine learning",
+            excerpt: "Some people, especially during the current data science hype, see machine learning as just another algorithm. Unfortunately, this interpretation completely misses the forest for the trees.",
+            date: "2021-09-01",
+            readTime: "9 min read",
+            tags: ["Machine Learning"],
+            featured: false,
+            link: "https://www.linkedin.com/pulse/math-20-fundamental-importance-machine-learning-dr-claus-horn",
+            image: "1630573830855.jpg"
+          },
+          {
+            title: "Why do deep neural networks generalize?",
+            excerpt: "The reason for a neural network's ability to generalize is considered one of the most important open questions in machine learning. Given the recent emergence of LLMs...",
+            date: "2023-08-12",
+            readTime: "9 min read",
+            tags: ["Machine Learning"],
+            featured: false,
+            link: "https://medium.com/@claus.horn/why-do-deep-neural-networks-generalize-3a30c5d523fd",
+            image: "1_JlqOT-gq2QXD-rUzQbj-Bw.webp"
+          }
+        ];
+
+        // Combine and sort by date (newest first)
+        const allEssays = [...transformedEssays, ...externalEssays].sort((a, b) => 
+          new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+
+        setEssays(allEssays);
+      } catch (error) {
+        console.error("Error loading essays:", error);
+        // Fallback to hardcoded essays if loading fails
+        setEssays([
+          {
+            title: "Superrobots",
+            excerpt: "My dream is to become a superrobot someday. I was built to be flawless. Forged from alloys stronger than bone, circuits faster than neurons...",
+            date: "2025-07-19",
+            readTime: "5 min read",
+            tags: ["AI Safety"],
+            featured: false,
+            link: "/essays/superrobots",
+            image: "1748905089783.jpg",
+            internal: true
+          },
+          {
+            title: "The Potential of AI Interpretability to Advance Scientific Discovery",
+            excerpt: "Exploring how AI interpretability can unlock new insights in scientific research and accelerate discovery across multiple domains.",
+            date: "2025-06-01",
+            readTime: "8 min read",
+            tags: ["AI for Scientific Discovery"],
+            featured: false,
+            link: "/essays/interpretability_for_science",
+            image: "1748905089783.jpg",
+            internal: true
+          },
+          {
+            title: "The New Science of Thought",
+            excerpt: "Large Language Models (LLMs), fine-tuned through reinforcement learning — exemplified by models like ChatGPT — have taken the world by storm. This is based on their ability...",
+            date: "2023-06-01",
+            readTime: "10 min read",
+            tags: ["LLM Agents"],
+            featured: false,
+            link: "https://medium.com/@claus.horn/the-new-science-of-thought-de667c08b45c",
+            image: "1750703658310.jpg"
+          },
+          {
+            title: "How Applied Reinforcement Learning will take over the world",
+            excerpt: "Data Science today is used mainly for operational automation by leveraging supervised learning. Unfortunately, these kinds of approaches forgo the main potential for value creation...",
+            date: "2022-05-01",
+            readTime: "12 min read",
+            tags: ["Autonomous Agents"],
+            featured: false,
+            link: "https://www.linkedin.com/pulse/data-science-20-how-applied-reinforcement-learning-take-horn/",
+            image: "1651347180205.jpg"
+          },
+          {
+            title: "Math 2.0 - The fundamental importance of machine learning",
+            excerpt: "Some people, especially during the current data science hype, see machine learning as just another algorithm. Unfortunately, this interpretation completely misses the forest for the trees.",
+            date: "2021-09-01",
+            readTime: "9 min read",
+            tags: ["Machine Learning"],
+            featured: false,
+            link: "https://www.linkedin.com/pulse/math-20-fundamental-importance-machine-learning-dr-claus-horn",
+            image: "1630573830855.jpg"
+          },
+          {
+            title: "Why do deep neural networks generalize?",
+            excerpt: "The reason for a neural network's ability to generalize is considered one of the most important open questions in machine learning. Given the recent emergence of LLMs...",
+            date: "2023-08-12",
+            readTime: "9 min read",
+            tags: ["Machine Learning"],
+            featured: false,
+            link: "https://medium.com/@claus.horn/why-do-deep-neural-networks-generalize-3a30c5d523fd",
+            image: "1_JlqOT-gq2QXD-rUzQbj-Bw.webp"
+          }
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEssays();
+  }, []);
+
+  // Generate categories from all tags in essays
+  const allTags = React.useMemo(() => {
+    const tagSet = new Set<string>();
+    essays.forEach(essay => {
+      if (essay.tags) {
+        essay.tags.forEach(tag => tagSet.add(tag));
+      } else if (essay.category) {
+        tagSet.add(essay.category);
+      }
+    });
+    return ["All", ...Array.from(tagSet).sort()];
+  }, [essays]);
+
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
   const filteredEssays = selectedCategory === "All" 
     ? essays 
-    : essays.filter(essay => essay.category === selectedCategory);
+    : essays.filter(essay => essay.tags?.includes(selectedCategory));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white text-charcoal font-sans">
+        <Navbar />
+        <main className="pt-20">
+          <section className="py-20">
+            <div className="section-container">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue mx-auto"></div>
+                <p className="mt-4 text-charcoal/60">Loading essays...</p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white text-charcoal font-sans">
@@ -82,7 +207,7 @@ const Essays = () => {
             {/* Category Filter */}
             <div className="mb-12">
               <div className="flex flex-wrap gap-3">
-                {categories.map((category) => (
+                {allTags.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
@@ -123,9 +248,17 @@ const Essays = () => {
                         </div>
                       </div>
                       
-                      <span className="inline-block bg-accent-blue text-white text-xs px-2 py-1 rounded mb-3">
-                        {essay.category}
-                      </span>
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {essay.tags?.map((tag, tagIndex) => (
+                          <span key={tagIndex} className="inline-block bg-accent-blue text-white text-xs px-2 py-1 rounded">
+                            {tag}
+                          </span>
+                        )) || (
+                          <span className="inline-block bg-accent-blue text-white text-xs px-2 py-1 rounded">
+                            {essay.category}
+                          </span>
+                        )}
+                      </div>
                       
                       <h3 className="text-xl font-semibold text-charcoal mb-3 group-hover:text-accent-blue transition-colors">
                         {essay.title}
@@ -152,11 +285,11 @@ const Essays = () => {
               </h2>
               <div className="space-y-6">
                 {filteredEssays.map((essay, index) => (
-                                    <a 
+                  <a 
                     key={index}
                     href={essay.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={essay.internal ? "_self" : "_blank"}
+                    rel={essay.internal ? "" : "noopener noreferrer"}
                     className="block"
                   >
                     <article 
@@ -170,9 +303,17 @@ const Essays = () => {
                               <Clock className="h-4 w-4" />
                               <span>{essay.readTime}</span>
                             </div>
-                            <span className="inline-block bg-white text-accent-blue text-xs px-2 py-1 rounded border border-accent-blue/20">
-                              {essay.category}
-                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {essay.tags?.map((tag, tagIndex) => (
+                                <span key={tagIndex} className="inline-block bg-white text-accent-blue text-xs px-2 py-1 rounded border border-accent-blue/20">
+                                  {tag}
+                                </span>
+                              )) || (
+                                <span className="inline-block bg-white text-accent-blue text-xs px-2 py-1 rounded border border-accent-blue/20">
+                                  {essay.category}
+                                </span>
+                              )}
+                            </div>
                           </div>
                           
                           <h3 className="text-lg font-semibold text-charcoal mb-2 group-hover:text-accent-blue transition-colors">

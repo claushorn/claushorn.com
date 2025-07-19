@@ -92,14 +92,10 @@ export function convertMarkdownToHtml(markdown: string): string {
   html = html.replace(/^## (.*$)/gim, '<h2 class="text-2xl font-semibold text-charcoal mb-6">$1</h2>');
   html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold text-charcoal mb-8">$1</h1>');
   
-  // Convert paragraphs (but not if they're already in HTML tags)
-  html = html.replace(/^(?!<[h|u|o|p|li])(.*$)/gim, '<p class="text-charcoal/80 leading-relaxed mb-4">$1</p>');
-  
-  // Convert bold
+  // Convert bold and italic BEFORE paragraphs
   html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  
-  // Convert italic
-  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  // Handle multi-line italic blocks
+  html = html.replace(/\*([^*]*?)\*/gs, '<em>$1</em>');
   
   // Convert code blocks
   html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-light-gray p-4 rounded-lg overflow-x-auto mb-4"><code>$1</code></pre>');
@@ -117,8 +113,11 @@ export function convertMarkdownToHtml(markdown: string): string {
   html = html.replace(/^\* (.*$)/gim, '<li class="ml-4 mb-2">$1</li>');
   html = html.replace(/(<li.*<\/li>)/s, '<ul class="list-disc ml-6 mb-4">$1</ul>');
   
-  // Clean up empty paragraphs
-  html = html.replace(/<p class="text-charcoal\/80 leading-relaxed mb-4"><\/p>/g, '');
+  // Convert paragraphs AFTER other formatting (but not if they're already in HTML tags)
+  html = html.replace(/^(?!<[h|u|o|p|li])(.*$)/gim, '<p class="text-charcoal/80 leading-relaxed mb-4">$1</p>');
+  
+  // Convert empty lines to spacing divs
+  html = html.replace(/<p class="text-charcoal\/80 leading-relaxed mb-4"><\/p>/g, '<div class="h-4"></div>');
   
   return html;
 } 

@@ -6,61 +6,6 @@ import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { convertMarkdownToHtml, Essay } from "@/utils/markdown";
 import { getEssay } from "@/utils/essayLoader";
 
-// Import the essays data from Essays.tsx
-const essaysData = [
-  {
-    title: "The Potential of AI Interpretability to Advance Scientific Discovery",
-    excerpt: "Exploring how AI interpretability can unlock new insights in scientific research and accelerate discovery across multiple domains.",
-    date: "2025-06-01",
-    readTime: "8 min read",
-    category: "AI for Scientific Discovery",
-    featured: false,
-    link: "/essays/interpretability_for_science",
-    image: "1748905089783.jpg",
-    internal: true
-  },
-  {
-    title: "The New Science of Thought",
-    excerpt: "Large Language Models (LLMs), fine-tuned through reinforcement learning — exemplified by models like ChatGPT — have taken the world by storm. This is based on their ability...",
-    date: "2023-06-01",
-    readTime: "10 min read",
-    category: "LLM Agents",
-    featured: false,
-    link: "https://medium.com/@claus.horn/the-new-science-of-thought-de667c08b45c",
-    image: "1750703658310.jpg"
-  },
-  {
-    title: "How Applied Reinforcement Learning will take over the world",
-    excerpt: "Data Science today is used mainly for operational automation by leveraging supervised learning. Unfortunately, these kinds of approaches forgo the main potential for value creation...",
-    date: "2022-05-01",
-    readTime: "12 min read",
-    category: "Autonomous Agents",
-    featured: false,
-    link: "https://www.linkedin.com/pulse/data-science-20-how-applied-reinforcement-learning-take-horn/",
-    image: "1651347180205.jpg"
-  },
-  {
-    title: "Math 2.0 - The fundamental importance of machine learning",
-    excerpt: "Some people, especially during the current data science hype, see machine learning as just another algorithm. Unfortunately, this interpretation completely misses the forest for the trees.",
-    date: "2021-09-01",
-    readTime: "9 min read",
-    category: "Machine Learning",
-    featured: false,
-    link: "https://www.linkedin.com/pulse/math-20-fundamental-importance-machine-learning-dr-claus-horn",
-    image: "1630573830855.jpg"
-  },
-  {
-    title: "Why do deep neural networks generalize?",
-    excerpt: "The reason for a neural network's ability to generalize is considered one of the most important open questions in machine learning. Given the recent emergence of LLMs...",
-    date: "2023-08-12",
-    readTime: "9 min read",
-    category: "Machine Learning",
-    featured: false,
-    link: "https://medium.com/@claus.horn/why-do-deep-neural-networks-generalize-3a30c5d523fd",
-    image: "1_JlqOT-gq2QXD-rUzQbj-Bw.webp"
-  }
-];
-
 const EssayPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -137,9 +82,6 @@ const EssayPage = () => {
   }
 
   const htmlContent = convertMarkdownToHtml(essay.content);
-  
-  // Get the essay metadata from Essays.tsx data
-  const essayMetadata = essaysData.find(e => e.link === `/essays/${slug}`);
 
   return (
     <div className="min-h-screen bg-white text-charcoal font-sans">
@@ -169,7 +111,7 @@ const EssayPage = () => {
                 </div>
                 <div className="flex items-center space-x-1">
                   <Clock className="h-4 w-4" />
-                  <span>{essayMetadata?.readTime || "8 min read"}</span>
+                  <span>8 min read</span>
                 </div>
               </div>
 
@@ -178,10 +120,10 @@ const EssayPage = () => {
               </h1>
 
               {/* Image */}
-              {essayMetadata?.image && (
+              {essay.metadata.image && (
                 <div className="mb-8">
                   <img 
-                    src={`/images/${essayMetadata.image}`}
+                    src={`/images/${essay.metadata.image}`}
                     alt={essay.metadata.title}
                     className="w-full max-w-2xl h-48 object-cover rounded-lg"
                   />

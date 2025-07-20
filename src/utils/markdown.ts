@@ -103,8 +103,14 @@ export function convertMarkdownToHtml(markdown: string): string {
   // Convert inline code
   html = html.replace(/`(.*?)`/g, '<code class="bg-light-gray px-1 py-0.5 rounded text-sm">$1</code>');
   
-  // Convert links
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent-blue hover:text-dark-red underline" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Convert links - handle both internal and external links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+    // Check if it's an internal link (starts with # or /)
+    const isInternal = url.startsWith('#') || url.startsWith('/');
+    const target = isInternal ? '' : 'target="_blank"';
+    const rel = isInternal ? '' : 'rel="noopener noreferrer"';
+    return `<a href="${url}" class="text-accent-blue hover:text-dark-red underline" ${target} ${rel}>${text}</a>`;
+  });
   
   // Convert reference citations like [1], [2], etc. to anchor links
   html = html.replace(/\[(\d+)\]/g, '<a href="#ref-$1" class="text-accent-blue hover:text-dark-red underline">[$1]</a>');

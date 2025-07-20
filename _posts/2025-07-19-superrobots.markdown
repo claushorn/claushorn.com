@@ -20,7 +20,7 @@ Before I, too, become a superrobot?*
 
 Poor ELIA-512, she will probably have to wait a long time. 
 And yes, my fellow humans, *we are superrobots*. 
-We are machines crafted by evolution, running on biochemical engines. Powered by molecules, repaired by self-assembling biological machines, miracles of self-sustaining engineering billions of years in the making. See molecular machines in action.
+We are machines crafted by evolution, running on biochemical engines. Powered by molecules, repaired by self-assembling biological machines, miracles of self-sustaining engineering billions of years in the making. [See molecular machines in action](https://www.youtube.com/watch?v=7Hk9jct2ozY).
 In school biology is often seen as soft science. Reserved for animal lovers, who preferred to avoid the rigor of physics or mathematics. But modern biology is different. It is data-driven modeling, systems theory, multi-scale simulations. And it turns out that modern AI approaches are ideally suited to model the complexity of biological systems.
 What holds for our bodies holds for our brains. Many still believe we are magical beings whose workings cannot be understood. But mounting evidence points to the brain as the ultimate control system, a self-wiring, self-adjusting network of billions of neurons, exchanging electrochemical signals according to principles we are starting to unlock. 
 Today, much is said about the rise of Superintelligence. But real intelligence must operate in the real world. And to be truly self-sufficient, it will need to become more like us. 

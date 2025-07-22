@@ -1,0 +1,30 @@
+<!--
+  This 404.html file allows GitHub Pages to support client-side routing for SPAs.
+  When a user visits a non-existent path, GitHub Pages serves this file, which redirects to index.html,
+  preserving the path for the client-side router (e.g., React Router).
+  Source: https://github.com/rafgraph/spa-github-pages
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0;url=./">
+    <script type="text/javascript">
+      // SPA redirect script for GitHub Pages
+      (function() {
+        var l = window.location;
+        var pathname = l.pathname.replace(/\/+/g, '/');
+        // If path is not root, redirect to index.html with the original path as a hash
+        if (pathname !== '/' && pathname !== '/index.html') {
+          var newUrl = l.protocol + '//' + l.host + l.pathname.replace(/\/[^/]*$/, '/') + 'index.html#' + l.pathname + l.search + l.hash;
+          window.location.replace(newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  </body>
+</html> 

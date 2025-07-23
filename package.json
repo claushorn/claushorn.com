@@ -7,7 +7,8 @@
     "dev": "vite",
     "process-essays": "node scripts/process-essays.js",
     "prebuild": "npm run process-essays",
-    "build": "npm run process-essays && vite build",
+    "build": "npm run process-essays && vite build && npm run postbuild",
+    "postbuild": "node scripts/process-essays.js",
     "build:dev": "npm run process-essays && vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"

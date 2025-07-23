@@ -141,6 +141,65 @@ export function clearEssayCache(): void {
   return template;
 }
 
+// Function to generate a static HTML file for an essay
+function generateEssayHtml(essay) {
+  const { title, date, image } = essay.metadata;
+  const htmlContent = convertMarkdownToHtml(essay.content);
+  return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${title} | Claus Horn</title>
+    <meta name="description" content="${title} - Essay by Claus Horn" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/App.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  </head>
+  <body class="bg-white text-charcoal font-sans">
+    <main class="pt-20">
+      <article class="pt-8 pb-20">
+        <div class="section-container max-w-4xl mx-auto">
+          <header class="mb-12">
+            <div class="flex items-center space-x-4 text-sm text-charcoal/60 mb-6">
+              <span>${new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">${title}</h1>
+            ${image ? `<div class="mb-8"><img src="/images/${image}" alt="${title}" class="w-full max-w-2xl h-48 object-cover rounded-lg" /></div>` : ''}
+          </header>
+          <div class="prose prose-lg max-w-none">${htmlContent}</div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>`;
+}
+
+// Copy of convertMarkdownToHtml from src/utils/markdown.ts
+function convertMarkdownToHtml(markdown) {
+  let html = markdown;
+  html = html.replace(/^### (.*$)/gim, '<h3 class="text-xl font-semibold text-charcoal mb-4">$1</h3>');
+  html = html.replace(/^## (.*$)/gim, '<h2 class="text-2xl font-semibold text-charcoal mb-6">$1</h2>');
+  html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold text-charcoal mb-8">$1</h1>');
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*([^*]*?)\*/gs, '<em>$1</em>');
+  html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-light-gray p-4 rounded-lg overflow-x-auto mb-4"><code>$1</code></pre>');
+  html = html.replace(/`(.*?)`/g, '<code class="bg-light-gray px-1 py-0.5 rounded text-sm">$1</code>');
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+    const isInternal = url.startsWith('#') || url.startsWith('/');
+    const target = isInternal ? '' : 'target="_blank"';
+    const rel = isInternal ? '' : 'rel="noopener noreferrer"';
+    return `<a href="${url}" class="text-accent-blue hover:text-dark-red underline" ${target} ${rel}>${text}</a>`;
+  });
+  html = html.replace(/\[(\d+)\]/g, '<a href="#ref-$1" class="text-accent-blue hover:text-dark-red underline">[$1]</a>');
+  html = html.replace(/^\* (.*$)/gim, '<li class="ml-4 mb-2">$1</li>');
+  html = html.replace(/(<li.*<\/li>)/s, '<ul class="list-disc ml-6 mb-4">$1</ul>');
+  html = html.replace(/^(?!<[h|u|o|p|li])(.*$)/gim, '<p class="text-charcoal/80 leading-relaxed mb-4">$1</p>');
+  html = html.replace(/<p class="text-charcoal\/80 leading-relaxed mb-4"><\/p>/g, '<div class="h-4"></div>');
+  return html;
+}
+
 // Main function
 function main() {
   const postsDir = path.join(__dirname, '..', '_posts');
@@ -190,6 +249,28 @@ function main() {
   fs.writeFileSync(loaderPath, loaderContent);
   console.log(`\n✅ Generated essayLoader.ts with ${essays.length} essays`);
   console.log(`📝 Essays are now available in your app!`);
+
+  // Generate static HTML files for each essay
+  const distEssaysDir = path.join(__dirname, '..', 'dist', 'essays');
+  if (!fs.existsSync(distEssaysDir)) {
+    fs.mkdirSync(distEssaysDir, { recursive: true });
+  }
+  essays.forEach(essay => {
+    const essayDir = path.join(distEssaysDir, essay.slug);
+    if (!fs.existsSync(essayDir)) {
+      fs.mkdirSync(essayDir, { recursive: true });
+    }
+    const html = generateEssayHtml(essay);
+    fs.writeFileSync(path.join(essayDir, 'index.html'), html);
+    console.log(`✅ Generated static HTML for essay: ${essay.slug}`);
+  });
+
+  // Remove SPA 404.html redirect if it exists
+  const dist404 = path.join(__dirname, '..', 'dist', '404.html');
+  if (fs.existsSync(dist404)) {
+    fs.unlinkSync(dist404);
+    console.log('🗑️ Removed SPA 404.html redirect');
+  }
 }
 
 main(); 

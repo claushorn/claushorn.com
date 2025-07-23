@@ -141,10 +141,21 @@ export function clearEssayCache(): void {
   return template;
 }
 
+// Helper to extract CSS links from dist/index.html
+function getCssLinksFromDist() {
+  const distIndexPath = path.join(__dirname, '..', 'dist', 'index.html');
+  if (!fs.existsSync(distIndexPath)) return '';
+  const html = fs.readFileSync(distIndexPath, 'utf8');
+  // Match all <link rel="stylesheet" ...> tags
+  const matches = html.match(/<link rel="stylesheet"[^>]*>/g);
+  return matches ? matches.join('\n    ') : '';
+}
+
 // Function to generate a static HTML file for an essay
 function generateEssayHtml(essay) {
   const { title, date, image } = essay.metadata;
   const htmlContent = convertMarkdownToHtml(essay.content);
+  const cssLinks = getCssLinksFromDist();
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -153,8 +164,7 @@ function generateEssayHtml(essay) {
     <title>${title} | Claus Horn</title>
     <meta name="description" content="${title} - Essay by Claus Horn" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/App.css" />
+    ${cssLinks}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
   </head>
   <body class="bg-white text-charcoal font-sans">

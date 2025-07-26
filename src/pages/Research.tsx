@@ -138,13 +138,23 @@ const Research = () => {
     {
       title: "Next Generation PCR",
       description: "This proposal aimed to improve the speed, sensitivity, and robustness of PCR by applying advanced reinforcement learning (RL) techniques. We proposed to introduce Generative Adversarial Reinforcement Learning (GARL), combining transformer-based generative models with RL optimization, to learn optimal temperature profiles from historical q-PCR data and a PCR simulator. This closed-loop approach would enable faster, more reliable protocols, enhanced generalization through synthetic data, and a validated RL pipeline for experimental biology. It would enable rapid diagnostics, reduce false negatives, and increase testing throughput.",
-      status: "Rejected by SNF",
+      status: "SNF proposal", //Practice to Science
       year: "2019",
       collaborators: ["ICLS"],
       publications: [],
       areas: ["Computational Biology"],
       image: "nextGenPCR.png",
       comment: "Unfortunately, this proposal was rejected by SNF, and there was a shortage of PCR tests because processing was too slow, which our approach might have been able to address."
+    },
+    {
+      title: "Model-based Reinforcement Leraning for Enzyme Engineering",
+      description: "A novel approach to enzyme engineering that leverages reinforcement learning to reduce laboratory measurements and accelerate the optimization process. This project addresses the central challenge of epistasis in directed evolution by applying model-based RL to sequential decision-making in protein mutation design. The approach uses a dual neural network architecture: a generative policy network that creates mutant libraries and a reward prediction simulator that learns to forecast enzyme activity. By shifting learning from expensive lab measurements to simulation as accuracy improves, this method promises to significantly advance computational approaches in life sciences, following the pattern of RL breakthroughs in Chess and Go.",
+      status: "SNF Practice to Science",
+      year: "2020",
+      collaborators: ["Competence Center for Biocatalysis at ZHAW", "ZHAW Center for AI"],
+      publications: [],
+      areas: ["Reinforcement Learning", "Biotechnology", "Protein Engineering"],
+      image: "researchApproachIllustration.png"
     },
     {
       title: "Deep Learning for Enzyme Engineering",

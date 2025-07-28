@@ -22,21 +22,21 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-white mb-3">Connect</h4>
             <div className="flex space-x-3">
               <a 
-                href="mailto:claus@claushorn.com" 
+                href="mailto:contact@claushorn.com" 
                 className="text-white/70 hover:text-white transition-colors"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/aiscientist/" 
                 className="text-white/70 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://claushorn.com" 
                 className="text-white/70 hover:text-white transition-colors"
                 aria-label="Website"
               >

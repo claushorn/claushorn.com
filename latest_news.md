@@ -1,8 +1,6 @@
 August 1, 2025: Our GEMS paper got accepted for publication at Nature.  
 
-July 15, 2025: Created a new proposal on AI Safety research with SPAR.  
-
-July 8, 2025: Submitted a SPAR proposal for AI safety research on "LLM Agents for Mechanistic Safety Alignment" (see research section).
+July 10, 2025: Submitted a SPAR proposal for AI safety research on "LLM Agents for Mechanistic Safety Alignment" (see research section).
 
 July 3, 2025: Hurray! We received an AI Seed Grant from Yale University for our AI for Scientific Discovery Workshop! Stay tuned! 
 

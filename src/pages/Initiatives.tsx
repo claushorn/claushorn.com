@@ -19,18 +19,20 @@ const Initiatives = () => {
     {
       icon: <Rocket className="h-8 w-8 text-accent-blue" />,
       title: "AI Pioneers",
-      description: "Bringing together motivated students and world-class AI researchers to collaborate on impactful, responsible research projects. We foster hands-on learning, mentorship, and the development of the next generation of scientific innovators.\n\n**Mentors:** Propose a research project you're excited about.\n\n**Students:** Explore open projects and rank your preferences to join a team that matches your interests.",
-      status: "Starting up",
+      description: "Bringing together motivated students and world-class AI researchers to collaborate on impactful, responsible research projects. We foster hands-on learning, mentorship, and the development of the next generation of scientific innovators.\n\n**Mentors:** Propose a research project and mentor a team.\n\n**Students:** Explore open projects and join a team that matches your interests.",
+      status: "First round of projects: September 2025",
       category: "Non-Profit",
-      image: "/images/aipioneers.png"
+      image: "/images/aipioneers.png",
+      website: "https://www.aipioneers.me"
     },
     {
       icon: <Lightbulb className="h-8 w-8 text-accent-blue" />,
       title: "Eureka Labs",
-      description: "We are innovators and engineers building AI solutions to accelerate scientific discovery.",
+      description: "We are researchers and engineers building AI solutions to accelerate scientific discovery while ensuring their outputs are safe, transparent, and beneficial to society.\n\n**Focus Areas:**\n• AI-based Research Ideation\n• Making AI-generated Scientific Ideas Human Intelligible\n• Mechanistic Interpretability for Scientific Discovery Systems\n• AI Safety of AI-driven Research",
       status: "Research Phase",
       category: "Venture",
-      image: "/images/EurekaLabs.png"
+      image: "/images/EurekaLabs.png",
+      website: "https://www.eurekalabs.ch"
     }
   ];
 
@@ -110,6 +112,23 @@ const Initiatives = () => {
                                 LinkedIn
                               </a>
                             </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Website links for all initiatives */}
+                      {initiative.website && initiative.title !== "Autonomous Agents Community" && (
+                        <div className="mt-6">
+                          <div className="flex items-center">
+                            <span className="mr-2">🌐</span>
+                            <a 
+                              href={initiative.website} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-accent-blue hover:text-accent-blue/80 font-medium underline underline-offset-2"
+                            >
+                              Visit Website
+                            </a>
                           </div>
                         </div>
                       )}

@@ -73,7 +73,7 @@ const About = () => {
                     <span className="text-sm text-gray-600">BioRxiv, 2024</span></li>
                     <li>Developed a discrete gradient ascent algorithm for efficient protein optimization, breaking long-held assumptions.
                     <span className="text-sm text-gray-600">Geometric Protein Optimization, BioRxiv, 2025</span></li>
-                    <li>Contributed to searches for the Higgs boson. It's discovery was recognized with the <strong className="text-accent-blue font-bold">2013 Nobel Prize in Physics</strong>.</li>
+                    <li>Contributed to searches for the Higgs boson. Its discovery was recognized with the <strong className="text-accent-blue font-bold">2013 Nobel Prize in Physics</strong>.</li>
                   </ul>
                 </div>
                 <div>

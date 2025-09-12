@@ -39,6 +39,7 @@ const Navbar = () => {
     { name: "Research Projects", path: "/research" },
     { name: "Essays", path: "/essays" },
     { name: "Book", path: "/book" },
+    { name: "Teaching", path: "/teaching" },
     { name: "About Me", path: "/about" }
   ];
 

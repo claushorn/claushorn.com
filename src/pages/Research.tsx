@@ -329,7 +329,7 @@ const Research = () => {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-charcoal mb-2">Current Interests</h4>
+                  <h4 className="font-semibold text-charcoal mb-2">Research Interests</h4>
                   <ul className="text-sm text-charcoal/70 space-y-1">
                     <li>• AI for Scientific Discovery</li>
                     <li>• AI Safety & Mechanistic Interpretability</li>

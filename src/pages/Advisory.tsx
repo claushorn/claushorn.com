@@ -98,19 +98,6 @@ const Advisory = () => {
               <span>As a member of the SATW panel I am advising the Swiss Federal Council on national Artificial Intelligence Strategy.</span>
             </div>
 
-            {/* Client Testimonial */}
-            <div className="mb-16 bg-gradient-to-r from-accent-blue/5 to-dark-red/5 p-8 rounded-lg">
-              <div className="flex items-start space-x-4">
-                <Quote className="h-8 w-8 text-accent-blue flex-shrink-0 mt-1" />
-                <div>
-                  <blockquote className="text-xl font-medium text-charcoal mb-4 italic">
-                    "Dr. Horn brings a unique blend of expertise in AI and agent-based systems. His guidance has helped us move from isolated machine learning features to designing full autonomy loops that incorporate perception, decision-making, and adaptive control within the appliance."
-                  </blockquote>
-                  <cite className="text-charcoal/70">— Marcel Koler, Head of Computer Aided Engineering, V-ZUG AG</cite>
-                </div>
-              </div>
-            </div>
-
             {/* Strategic AI Advisory */}
             <div className="mb-16">
               <h2 className="text-2xl font-semibold text-charcoal mb-8">AI Advisory Services</h2>
@@ -142,6 +129,20 @@ const Advisory = () => {
             {/* Why Work With Me */}
             <div className="mb-16">
               <h2 className="text-2xl font-semibold text-charcoal mb-8">Why Work With Me?</h2>
+              
+              {/* Client Testimonial */}
+              <div className="mb-8 bg-gradient-to-r from-accent-blue/5 to-dark-red/5 p-8 rounded-lg">
+                <div className="flex items-start space-x-4">
+                  <Quote className="h-8 w-8 text-accent-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <blockquote className="text-xl font-medium text-charcoal mb-4 italic">
+                      "Dr. Horn brings a unique blend of expertise in AI and agent-based systems. His guidance has helped us move from isolated machine learning features to designing full autonomy loops that incorporate perception, decision-making, and adaptive control within the appliance."
+                    </blockquote>
+                    <cite className="text-charcoal/70">— Marcel Koler, Head of Computer Aided Engineering, V-ZUG AG</cite>
+                  </div>
+                </div>
+              </div>
+              
               <div className="space-y-6">
                 {valuePropositions.map((prop, index) => (
                   <div 

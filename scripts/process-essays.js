@@ -359,11 +359,12 @@ function main() {
     console.log(`✅ Generated static HTML for essay: ${essay.slug}`);
   });
 
-  // Remove SPA 404.html redirect if it exists
+  // Copy 404.html for GitHub Pages SPA routing
+  const public404 = path.join(__dirname, '..', 'public', '404.html');
   const dist404 = path.join(__dirname, '..', 'dist', '404.html');
-  if (fs.existsSync(dist404)) {
-    fs.unlinkSync(dist404);
-    console.log('🗑️ Removed SPA 404.html redirect');
+  if (fs.existsSync(public404)) {
+    fs.copyFileSync(public404, dist404);
+    console.log('✅ Copied 404.html for GitHub Pages SPA routing');
   }
 }
 

@@ -31,7 +31,7 @@ const About = () => {
                 <blockquote className="text-xl font-medium text-charcoal mb-4 italic">
                   "Claus has consistently been a magnet for talented students. [...] I have worked with many strong researchers in my career, many of them in faculty positions worldwide. When it comes to pursuing bold ideas with significant impact, I believe Claus is among the very best of them."
                 </blockquote>
-                <cite className="text-charcoal/70">— Su Dong, Professor of Physics, Stanford</cite>
+                <cite className="text-charcoal/70">— Su Dong, Professor of Physics, Stanford University</cite>
               </div>
             </div>
           </div>

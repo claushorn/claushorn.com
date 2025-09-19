@@ -9,7 +9,7 @@ const Teaching = () => {
       year: "2025",
       courses: [
         {
-          title: "AI for Protein Design, Yale - CBB Program",
+          title: "AI for Protein Design, Yale University - CBB Program",
           content: "Advanced course covering AI-driven protein design methodologies, including structure prediction, sequence optimization, and functional annotation using state-of-the-art machine learning approaches."
         }
       ]

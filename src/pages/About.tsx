@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Quote } from "lucide-react";
+import { Quote, Download } from "lucide-react";
 
 const About = () => {
   return (
@@ -14,9 +14,21 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
               About Me
             </h1>
-            <p className="text-xl text-charcoal/70 font-medium">
+            <p className="text-xl text-charcoal/70 font-medium mb-8">
             I have had the chance to contribute to many exciting projects, <br/>from searches for microscopic black holes to AI models for protein design and real-world autonomous systems.
             </p>
+            
+            {/* CV Download Button */}
+            <div className="flex justify-center">
+              <a
+                href="/CV_ClausHorn_2025.pdf"
+                download="CV_ClausHorn_2025.pdf"
+                className="inline-flex items-center space-x-2 bg-accent-blue hover:bg-accent-blue/90 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+              >
+                <Download className="h-5 w-5" />
+                <span>Download CV</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

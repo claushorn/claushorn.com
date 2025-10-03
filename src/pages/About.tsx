@@ -81,7 +81,7 @@ const About = () => {
                     <span className="text-sm text-gray-600">J. Phys. G, 36:105005; AIP Conf. Proc., 1200(1):794–797</span>, which has been widely adopted.</li>
                     <li>Founded the displaced-vertices group at ATLAS, which has grown into a field with &gt;300 active researchers.
                     <span className="text-sm text-gray-600">Phys. Lett. B, 707:478–496; CERN Courier</span></li>
-                    <li>Solved the decade-old data leakage problem in protein-ligand modeling, and introduced the first truely generalizing GNN model for binding affinity prediction.
+                    <li>Solved the decade-old data leakage problem in protein-ligand modeling, and introduced the first truly generalizing GNN model for binding affinity prediction.
                     <span className="text-sm text-gray-600">BioRxiv, 2024</span></li>
                     <li>Developed a discrete gradient ascent algorithm for efficient protein optimization, breaking long-held assumptions.
                     <span className="text-sm text-gray-600">Geometric Protein Optimization, BioRxiv, 2025</span></li>

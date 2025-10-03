@@ -36,11 +36,11 @@ const Teaching = () => {
       year: "2021-2023",
       courses: [
         {
-          title: "Advanced Deep Learning for Life Science students, ZHAW",
+          title: "Advanced Deep Learning for Life Sciences, ZHAW",
           content: "Specialized deep learning course for life science students, covering advanced neural architectures, transfer learning, and applications in genomics, proteomics, and drug discovery."
         },
         {
-          title: "Machine Learning and Pattern Recognition for ACLS students, ZHAW",
+          title: "Machine Learning and Pattern Recognition, ZHAW",
           content: "Foundation course in machine learning and pattern recognition, covering supervised and unsupervised learning, feature selection, model evaluation, and applications in life sciences."
         }
       ]

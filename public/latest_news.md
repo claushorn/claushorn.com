@@ -1,3 +1,5 @@
+September 21, 2025: Read our latest paper here (https://www.nature.com/articles/s42256-025-01124-5)[https://www.nature.com/articles/s42256-025-01124-5]
+
 August 1, 2025: Our GEMS paper got accepted for publication at Nature.  
 
 July 10, 2025: Submitted a SPAR proposal for AI safety research on "LLM Agents for Mechanistic Safety Alignment" (see research section).
